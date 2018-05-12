@@ -4,9 +4,9 @@ Anotações do curso - [Curso online Vue parte1](https://www.alura.com.br/curso-
 
 ## Aulas
 
-# Módulo 01 - Parte 1
+# Cápitulo 01
 
-#### [M1#A02](M1A_02.md) - Introdução
+#### [cap_01_aula03](cap01_aula03.md) - Introdução
   * exemplo1
   * Onde vamos utilizar o __React__?
   * Onde __NÃO__ devemos utilizar o React?
