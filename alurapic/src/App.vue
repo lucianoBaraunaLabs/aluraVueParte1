@@ -2,9 +2,9 @@
   <div>
     <h1>{{ titulo }}</h1>
     <ul>
-      <!-- <li v-for="foto of fotos"> -->
+      <li v-for="foto of fotos">
         <img :src="foto.url" :alt="foto.titulo">
-      <!-- </li> -->
+      </li>
     </ul>
   </div>
 </template>
@@ -15,18 +15,27 @@ export default {
   data() {
     return {
       titulo: 'Alurapic',
-      fotos: [
-        {
-          url: 'https://img.olx.com.br/images/92/922802021759458.jpg',
-          titulo: 'Imagem de casa'
-        },
-        {
-          url: 'https://www.plantapronta.com.br/projetos/140/01.jpg',
-          titulo: 'Imagem de casa 2'
-        }
-      ]
+      fotos: []
     }
+  },
+
+  // Lifecycle hooks
+  created() {
+    // Forma de resolver com promisse
+    // let promisse = this.$http.get('http://localhost:3000/v1/fotos');
+    // // promisse.then(res => console.log('resposta', res.json()))
+    // // promisse.then(res => {
+    // //   res.json().then(res => this.fotos = res)
+    // // })
+    this.$http.get('http://localhost:3000/v1/fotos')
+      .then(res => res.json())
+      .then(
+        fotos => this.fotos = fotos,
+        err => console.log(err)
+      );
   }
+
+
 }
 </script>
 
