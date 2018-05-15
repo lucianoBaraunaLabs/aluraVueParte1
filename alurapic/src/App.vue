@@ -3,7 +3,7 @@
     <h1 class="centralizado">{{ titulo }}</h1>
     <input type="search" class="filtro" v-on:input="filtro = $event.target.value" placeholder="filtre pelo título da foto">
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="foto of fotos">
+      <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
         <meu-painel :titulo="foto.titulo">
           <!-- aqui dentro tenho um conteúdo que está sendo renderizando dentro de slot em Painel.vue -->
           <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
@@ -31,6 +31,20 @@ export default {
       fotos: [],
       filtro: ''
     }
+  },
+
+  computed: { // aqui fica os métodos do componente
+
+   fotosComFiltro() {
+     if(this.fotos){
+       let exp = new RegExp(this.filtro.trim(), 'i');
+       console.log(exp)
+       return this.fotos.filter(foto => exp.test(foto.titulo));
+     }else {
+       this.fotos
+     }
+   }
+
   },
 
   // Lifecycle hooks
