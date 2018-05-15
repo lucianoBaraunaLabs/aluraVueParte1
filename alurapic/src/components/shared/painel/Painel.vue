@@ -1,8 +1,12 @@
 <template>
   <div class="painel">
     <h2 class="painel-titulo">{{ titulo }}</h2>
-    <div class="painel-corpo">
-    </div>
+    <h1>
+      <slot class="painel-corpo">
+        <!-- aqui dentro é aonde está sendo renderizado to o conteúdo que está dento desse componente em App.vue -->
+      </slot>
+
+    </h1>
   </div>
 </template>
 
@@ -13,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 /* estilo do painel */
 
    .painel {
@@ -36,5 +40,11 @@ export default {
     padding: 10px;
     text-transform: uppercase;
   }
+
+  *  {
+    box-shadow: 5px 5px 5px;
+  }
+
+
 </style>
 
