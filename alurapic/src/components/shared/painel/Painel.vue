@@ -4,7 +4,7 @@
     <transition name="painel-fade">
       <div class="painel-conteudo" v-show="visivel">
         <slot>
-          <!-- aqui dentro é aonde está sendo renderizado to o conteúdo que está dento desse componente em App.vue -->
+          <!-- aqui dentro é aonde está sendo renderizado to o conteúdo que está dentro desse componente em App.vue -->
         </slot>
 
       </div>
