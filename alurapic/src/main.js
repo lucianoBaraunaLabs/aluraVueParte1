@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import App from './App.vue';
-
-// Usando VueResource na Vue instance
 import VueResource from 'vue-resource';
+import VueRouter from 'vue-router';
+
 Vue.use(VueResource)
 
 new Vue({

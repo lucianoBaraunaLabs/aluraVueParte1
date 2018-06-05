@@ -9,7 +9,9 @@ export default {
 </script>
 
 <style scoped>
-
+.centralizado {
+  text-align: center;
+}
 </style>
 
 
