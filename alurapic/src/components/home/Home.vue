@@ -3,10 +3,13 @@
     <h1 class="centralizado">{{ titulo }}</h1>
     <input type="search" class="filtro" @input="filtro = $event.target.value" placeholder="filtre pelo título da foto">
     <ul class="lista-fotos">
-      <li class="lista-fotos-item" v-for="foto of fotosComFiltro">
+      <li class="lista-fotos-item" v-for="foto of fotosComFiltro" :key="foto.url">
         <meu-painel :titulo="foto.titulo">
           <!-- aqui dentro tenho um conteúdo que está sendo renderizando dentro de slot em Painel.vue -->
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
+          <meu-botao :tipo="button" rotulo="REMOVER" @click.native="remove(foto)"/>
+          <!-- Colocamos o @click.native="foo" para tags que são uma caixa preta reconhecerem o evento
+          e passarem para os componentes internos. -->
         </meu-painel>
       </li>
     </ul>
@@ -18,12 +21,14 @@
 <script>
 import Painel from '../shared/painel/Painel'
 import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva'
+import Botao from "../shared/botao/Botao";
 
 export default {
   // Chave para importar os componentes dentro de App.vue
   components: {
     'meu-painel': Painel, // seu o nome é igual aqui posso fazer Painel
-    'imagem-responsiva': ImagemResponsiva
+    'imagem-responsiva': ImagemResponsiva,
+    'meu-botao': Botao
   },
 
   // Dados que vão ser utilizados no componente
@@ -47,6 +52,14 @@ export default {
      }
    }
 
+  },
+
+  methods: {
+    remove(foto) {
+      if(confirm('Confirma operação?')) {
+        alert('remover foto ' + foto.titulo)
+      }
+    }
   },
 
   // Lifecycle hooks
