@@ -7,9 +7,17 @@
         <meu-painel :titulo="foto.titulo">
           <!-- aqui dentro tenho um conteúdo que está sendo renderizando dentro de slot em Painel.vue -->
           <imagem-responsiva :url="foto.url" :titulo="foto.titulo" />
-          <meu-botao :tipo="button" rotulo="REMOVER" @click.native="remove(foto)"/>
+          <!-- <meu-botao :tipo="button" rotulo="REMOVER" @click.native="remove(foto)"/> -->
           <!-- Colocamos o @click.native="foo" para tags que são uma caixa preta reconhecerem o evento
           e passarem para os componentes internos. -->
+          <!-- Passando uma função  para o elemento filho e apartir da confirmação dele
+          executamos a função remove() que está no Home.vue -->
+          <meu-botao
+            :tipo="button"
+            rotulo="REMOVER"
+            @botaoAtivado="remove(foto)"
+            :confirmacao="false"
+            estilo="perigo"/>
         </meu-painel>
       </li>
     </ul>
@@ -56,9 +64,7 @@ export default {
 
   methods: {
     remove(foto) {
-      if(confirm('Confirma operação?')) {
-        alert('remover foto ' + foto.titulo)
-      }
+      alert('remover foto ' + foto.titulo)
     }
   },
 
